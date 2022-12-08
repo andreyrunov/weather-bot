@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer')
 require('dotenv').config()
 
 async function getLocationName(url) {
-	// const getLocationName = async (url) => {
+
 	// открываем браузер
 	const browser = await puppeteer.launch({
 		// headless: false,
@@ -44,9 +44,7 @@ bot.start((ctx) =>
 // обработчик, который принимает от пользователя сообщение и выводит его в консоль
 bot.on('message', async (ctx) => {
 	if (ctx.message.location) {
-		// console.log(ctx.message)
 		const url = `https://api.weather.yandex.ru/v2/informers?lat=${ctx.message.location.latitude}&lon=${ctx.message.location.longitude}`
-
 		try {
 			const response = await axios({
 				method: 'get',
@@ -54,21 +52,12 @@ bot.on('message', async (ctx) => {
 				headers: {
 					'Content-Type': 'application/json',
 					'X-Yandex-API-Key': 'c1fec854-4a72-446f-8d2a-a9776ed55a81',
-					// 'Content-Type': 'application/x-www-form-urlencoded',
 				},
 			})
 
-			console.log(
-				response.data,
-				'=============================================================='
-			)
-
-			// const dataTime = new Date(response.data.now_dt)
 			const dataTime = new Date()
-			// console.log(dataTime, '<----------------------------')
-
 			const location = await getLocationName(response.data.info.url)
-			// console.log(location, '<---------------------')
+
 			if (location) {
 				ctx.reply(`Ваше местоположение: ${location}`)
 				ctx.reply(`Сегодня: ${dataTime.getDate()}-${dataTime.getMonth()}-${dataTime.getFullYear()}, ${dataTime.getHours()}:${dataTime.getMinutes()}
@@ -77,7 +66,6 @@ bot.on('message', async (ctx) => {
 Скорость ветра: ${response.data.fact.wind_speed}
 `)
 			}
-			// console.log(response.data.forecast.parts)
 		} catch (err) {
 			console.error(err)
 		}
