@@ -6,7 +6,10 @@ require('dotenv').config()
 async function getLocationName(url) {
 	// const getLocationName = async (url) => {
 	// открываем браузер
-	const browser = await puppeteer.launch({ headless: false })
+	const browser = await puppeteer.launch({
+		// headless: false,
+		args: ['--no-sandbox', '--disable-setuid-sandbox'],
+	})
 
 	// открываем вкладку в браузере
 	const page = await browser.newPage()
