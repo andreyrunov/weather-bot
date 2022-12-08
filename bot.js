@@ -63,7 +63,12 @@ bot.on('message', async (ctx) => {
 				ctx.reply(`Сегодня: ${dataTime.getDate()}-${dataTime.getMonth()}-${dataTime.getFullYear()}, ${dataTime.getHours()}:${dataTime.getMinutes()}
 Температура: ${response.data.fact.temp}
 Ощущается как: ${response.data.fact.feels_like}
-Скорость ветра: ${response.data.fact.wind_speed}
+
+Скорость ветра: ${response.data.fact.wind_speed} м/с
+Давление: ${response.data.fact.pressure_mme} мм
+
+Рассвет: ${response.data.forecast.sunrise}
+Закат: ${response.data.forecast.sunset}
 `)
 			}
 		} catch (err) {
