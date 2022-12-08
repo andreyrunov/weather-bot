@@ -65,7 +65,7 @@ bot.on('message', async (ctx) => {
 Ощущается как: ${response.data.fact.feels_like}
 
 Скорость ветра: ${response.data.fact.wind_speed} м/с
-Давление: ${response.data.fact.pressure_mme} мм
+Давление: ${response.data.fact.pressure_mm} мм
 
 Рассвет: ${response.data.forecast.sunrise}
 Закат: ${response.data.forecast.sunset}
